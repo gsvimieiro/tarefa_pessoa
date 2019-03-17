@@ -76,9 +76,42 @@
 					<td>
 						<button type="button" data-ng-click="controller.alterar(dadosPessoa)">Alterar</button>
 						<button type="button" data-ng-click="controller.deletar(dadosPessoa)">Deletar</button>
+						<button type="button" data-ng-click="controller.pesquisar(dadosPessoa)">Busca</button>
 					</td>
 				</tr>
 			</table>
+		</div>
+		
+		<div data-ng-show="controller.busca">
+			<label>ID:</label>
+			<input type="number" id="id" data-ng-model="controller.busca.id" disabled>
+			<br>
+			<label for="nome">Nome:</label>
+			<input type="text" id="nome" data-ng-model="controller.busca.nome">
+			<br>
+			<label for="rua">Rua:</label>
+			<input type="text" id="rua" data-ng-model="controller.busca.rua">
+			<br>
+			<label for="numero">Numero:</label>
+			<input type="text" id="numero" data-ng-model="controller.busca.numero">
+			<br>
+			<label for="bairro">Bairro:</label>
+			<input type="text" id="bairro" data-ng-model="controller.busca.bairro">
+			<br>
+			<label for="cidade">Cidade:</label>
+			<input type="text" id="cidade" data-ng-model="controller.busca.cidade">
+			<br>
+			<label for="estado">estado:</label>
+			<input type="text" id="estado" data-ng-model="controller.busca.estado">
+			<br>
+			<label for="celular">Celular:</label>
+			<input type="text" id="celular" data-ng-model="controller.busca.celular">
+			<br>
+			<label for="telefone">Telefone:</label>
+			<input type="text" id="telefone" data-ng-model="controller.busca.telefone">
+			<br>
+			<br>
+			<button type="button" data-ng-click="controller.voltar()">Voltar</button>
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
