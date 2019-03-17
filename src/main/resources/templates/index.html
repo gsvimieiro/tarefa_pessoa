@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+		
+<head>
+
+	<title>CAST Tarefa 3</title>
+
+</head>
+
+<body data-ng-app="PessoaApp">
+	<h1>ANGULAR </h1>
+	<div data-ng-controller= "pessoaController as controller">
+		
+		<h3>Tarefa : {{controller.projeto}}</h3>
+		
+		<div data-ng-show="controller.pessoa">
+			<label>ID:</label>
+			<input type="number" id="id" data-ng-model="controller.pessoa.id" disabled>
+			<br>
+			<label for="nome">Nome:</label>
+			<input type="text" id="nome" data-ng-model="controller.pessoa.nome">
+			<br>
+			<label for="rua">Rua:</label>
+			<input type="text" id="rua" data-ng-model="controller.pessoa.rua">
+			<br>
+			<label for="numero">Numero:</label>
+			<input type="text" id="numero" data-ng-model="controller.pessoa.numero">
+			<br>
+			<label for="bairro">Bairro:</label>
+			<input type="text" id="bairro" data-ng-model="controller.pessoa.bairro">
+			<br>
+			<label for="cidade">Cidade:</label>
+			<input type="text" id="cidade" data-ng-model="controller.pessoa.cidade">
+			<br>
+			<label for="estado">estado:</label>
+			<input type="text" id="estado" data-ng-model="controller.pessoa.estado">
+			<br>
+			<label for="celular">Celular:</label>
+			<input type="text" id="celular" data-ng-model="controller.pessoa.celular">
+			<br>
+			<label for="telefone">Telefone:</label>
+			<input type="text" id="telefone" data-ng-model="controller.pessoa.telefone">
+			<br>
+			<br>
+			<button type="button" data-ng-click="controller.salvar()">Salvar</button>
+			<button type="button" data-ng-click="controller.pessoa = undefined">Cancelar</button>
+		</div>
+		
+		<div style="border: 1px solid black;" data-ng-show="!controller.pessoa">
+			<button type="button" data-ng-click="controller.novo()">Incluir nova Pessoa</button>
+			<br>
+			
+			<table border="1">
+				<tr>
+					<th>Id</th>
+					<th>Pessoa</th>
+					<th>Rua</th>
+					<th>Numero</th>
+					<th>Bairro</th>
+					<th>Cidade</th>
+					<th>estado</th>
+					<th>Celular</th>
+					<th>Telefone</th>
+					<th>...</th>
+				</tr>
+				<tr data-ng-repeat="dadosPessoa in controller.pessoas">
+					<td>{{dadosPessoa.id}}</td>
+					<td>{{dadosPessoa.nome}}</td>
+					<td>{{dadosPessoa.rua}}</td>
+					<td>{{dadosPessoa.numero}}</td>
+					<td>{{dadosPessoa.bairro}}</td>
+					<td>{{dadosPessoa.cidade}}</td>
+					<td>{{dadosPessoa.estado}}</td>
+					<td>{{dadosPessoa.celular}}</td>
+					<td>{{dadosPessoa.telefone}}</td>
+					<td>
+						<button type="button" data-ng-click="controller.alterar(dadosPessoa)">Alterar</button>
+						<button type="button" data-ng-click="controller.deletar(dadosPessoa)">Deletar</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
+	<script src="angular/js/controllerPessoa.js"></script>
+</body>
+
+
+</html>
