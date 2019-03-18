@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 		
 <head>
 
-	<title>CAST Tarefa 3</title>
+<title>CAST Tarefa 3</title>
+<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
 
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCss.css"/>
+      
 </head>
 
+
 <body data-ng-app="PessoaApp">
-	<h1>ANGULAR </h1>
-	<div data-ng-controller= "pessoaController as controller">
+	
+	<div data-ng-controller="pessoaController as controller" class="container divGrande">
 		
 		<h3>Tarefa : {{controller.projeto}}</h3>
 		
@@ -18,67 +28,71 @@
 			<input type="number" id="id" data-ng-model="controller.pessoa.id" disabled>
 			<br>
 			<label for="nome">Nome:</label>
-			<input type="text" id="nome" data-ng-model="controller.pessoa.nome">
+			<input type="text" id="nome" data-ng-model="controller.pessoa.nome" maxlength="100">
 			<br>
 			<label for="rua">Rua:</label>
-			<input type="text" id="rua" data-ng-model="controller.pessoa.rua">
+			<input type="text" id="rua" data-ng-model="controller.pessoa.rua" maxlength="100">
 			<br>
 			<label for="numero">Numero:</label>
-			<input type="text" id="numero" data-ng-model="controller.pessoa.numero">
+			<input type="text" id="numero" data-ng-model="controller.pessoa.numero" maxlength="10">
 			<br>
 			<label for="bairro">Bairro:</label>
-			<input type="text" id="bairro" data-ng-model="controller.pessoa.bairro">
+			<input type="text" id="bairro" data-ng-model="controller.pessoa.bairro" maxlength="50">
 			<br>
 			<label for="cidade">Cidade:</label>
-			<input type="text" id="cidade" data-ng-model="controller.pessoa.cidade">
+			<input type="text" id="cidade" data-ng-model="controller.pessoa.cidade" maxlength="50">
 			<br>
-			<label for="estado">estado:</label>
-			<input type="text" id="estado" data-ng-model="controller.pessoa.estado">
+			<label for="estado">Estado:</label>
+			<input type="text" id="estado" data-ng-model="controller.pessoa.estado" maxlength="50">
 			<br>
 			<label for="celular">Celular:</label>
-			<input type="text" id="celular" data-ng-model="controller.pessoa.celular">
+			<input type="number" id="celular" data-ng-model="controller.pessoa.celular" maxlength="15">
 			<br>
 			<label for="telefone">Telefone:</label>
-			<input type="text" id="telefone" data-ng-model="controller.pessoa.telefone">
+			<input type="number" id="telefone" data-ng-model="controller.pessoa.telefone" maxlength="15">
 			<br>
 			<br>
-			<button type="button" data-ng-click="controller.salvar()">Salvar</button>
-			<button type="button" data-ng-click="controller.pessoa = undefined">Cancelar</button>
+			<button type="button" data-ng-click="controller.salvar()" class="waves-effect waves-light btn">Salvar</button>
+			<button type="button" data-ng-click="controller.pessoa = undefined" class="waves-effect waves-light btn">Cancelar</button>
 		</div>
 		
-		<div style="border: 1px solid black;" data-ng-show="!controller.pessoa">
-			<button type="button" data-ng-click="controller.novo()">Incluir nova Pessoa</button>
+		<div class="divPessoa container" data-ng-show="!controller.pessoa">
+			<button type="button" data-ng-click="controller.novo()" class="waves-effect waves-light btn">Incluir</button>
 			<br>
 			
-			<table border="1">
-				<tr>
-					<th>Id</th>
-					<th>Pessoa</th>
-					<th>Rua</th>
-					<th>Numero</th>
-					<th>Bairro</th>
-					<th>Cidade</th>
-					<th>estado</th>
-					<th>Celular</th>
-					<th>Telefone</th>
-					<th>...</th>
-				</tr>
-				<tr data-ng-repeat="dadosPessoa in controller.pessoas">
-					<td>{{dadosPessoa.id}}</td>
-					<td>{{dadosPessoa.nome}}</td>
-					<td>{{dadosPessoa.rua}}</td>
-					<td>{{dadosPessoa.numero}}</td>
-					<td>{{dadosPessoa.bairro}}</td>
-					<td>{{dadosPessoa.cidade}}</td>
-					<td>{{dadosPessoa.estado}}</td>
-					<td>{{dadosPessoa.celular}}</td>
-					<td>{{dadosPessoa.telefone}}</td>
-					<td>
-						<button type="button" data-ng-click="controller.alterar(dadosPessoa)">Alterar</button>
-						<button type="button" data-ng-click="controller.deletar(dadosPessoa)">Deletar</button>
-						<button type="button" data-ng-click="controller.pesquisar(dadosPessoa)">Busca</button>
-					</td>
-				</tr>
+			<table class="container tablePessoa" border="1">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Pessoa</th>
+						<th>Rua</th>
+						<th>Numero</th>
+						<th>Bairro</th>
+						<th>Cidade</th>
+						<th>Estado</th>
+						<th>Celular</th>
+						<th>Telefone</th>
+						<th>...</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="dadosPessoa in controller.pessoas">
+						<td>{{dadosPessoa.id}}</td>
+						<td>{{dadosPessoa.nome}}</td>
+						<td>{{dadosPessoa.rua}}</td>
+						<td>{{dadosPessoa.numero}}</td>
+						<td>{{dadosPessoa.bairro}}</td>
+						<td>{{dadosPessoa.cidade}}</td>
+						<td>{{dadosPessoa.estado}}</td>
+						<td>{{dadosPessoa.celular}}</td>
+						<td>{{dadosPessoa.telefone}}</td>
+						<td>
+							<button type="button" data-ng-click="controller.alterar(dadosPessoa)" class="waves-effect waves-light btn">Alterar</button>
+							<button type="button" data-ng-click="controller.deletar(dadosPessoa)" class="waves-effect waves-light btn">Deletar</button>
+							<button type="button" data-ng-click="controller.pesquisar(dadosPessoa)" class="waves-effect waves-light btn">Busca</button>
+						</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 		
@@ -101,7 +115,7 @@
 			<label for="cidade">Cidade:</label>
 			<input type="text" id="cidade" data-ng-model="controller.busca.cidade">
 			<br>
-			<label for="estado">estado:</label>
+			<label for="estado">Estado:</label>
 			<input type="text" id="estado" data-ng-model="controller.busca.estado">
 			<br>
 			<label for="celular">Celular:</label>
@@ -111,7 +125,7 @@
 			<input type="text" id="telefone" data-ng-model="controller.busca.telefone">
 			<br>
 			<br>
-			<button type="button" data-ng-click="controller.voltar()">Voltar</button>
+			<button type="button" data-ng-click="controller.voltar()" class="waves-effect waves-light btn">Voltar</button>
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
