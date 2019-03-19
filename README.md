@@ -1,5 +1,5 @@
 # Tarefa Pessoa
-Projeto implementado para atender a primeira tarefa do processo seletivo da CAST
+Projeto implementado para atender a terceira tarefa do processo seletivo da CAST
 
 Objetivo
 Implementar 4 endpoints com Spring Boot :
